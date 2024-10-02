@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehdi Imani - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="navbar">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container" onclick="window.location.href='index.html';">
+                    <img src="mehdilogo.png" alt="Logo Mehdi Imani" class="logo">
+                    <span class="name">Mehdi Imani</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#work-section" class="nav-link">Projets</a></li>
+                    <li><a href="profil.html" class="nav-link active">Profil</a></li>
+                    <li><a href="https://www.instagram.com/manimani_iii" class="nav-link" target="_blank">Instagram</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="work-section" class="work-section">
+            <div class="container">
+                <h1 class="title">Illustrations & Motion Design</h1>
+                <div class="work-gallery">
+                    <div class="work-item" data-id="1">
+                        <video src="oeuvres/3_Démo Mehdi Imani alternance.mp4"></video>
+                        <div class="overlay">
+                            <span class="work-title">Vidéo 1</span>
+                        </div>
+                    </div>
+                    <div class="work-item" data-id="2">
+                        <video src="oeuvres/Boule quies.mp4"></video>
+                        <div class="overlay">
+                            <span class="work-title">Vidéo 2</span>
+                        </div>
+                    </div>
+                    <div class="work-item" data-id="3">
+                        <video src="oeuvres/FOOTBAR_E004_ÉVÉNEMENT BORDEAUX_LONGUE.mp4"></video>
+                        <div class="overlay">
+                            <span class="work-title">Vidéo 3</span>
+                        </div>
+                    </div>
+                    <div class="work-item" data-id="4">
+                        <video src="oeuvres/Goon festival !.mp4"></video>
+                        <div class="overlay">
+                            <span class="work-title">Vidéo 4</span>
+                        </div>
+                    </div>
+                    <div class="work-item" data-id="5">
+                        <video src="oeuvres/LA-ROCHE-POSAY_Mehdi Imani.mp4"></video>
+                        <div class="overlay">
+                            <span class="work-title">Vidéo 5</span>
+                        </div>
+                    </div>
+                    <div class="work-item" data-id="6">
+                        <video src="oeuvres/LCS FAMILY Imani Mehdi.mp4"></video>
+                        <div class="overlay">
+                            <span class="work-title">Vidéo 6</span>
+                        </div>
+                    </div>
+                    <div class="work-item" data-id="7">
+                        <video src="oeuvres/QSD 6 nations rugby.mp4"></video>
+                        <div class="overlay">
+                            <span class="work-title">Vidéo 7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work-detail" class="work-detail">
+            <div class="container">
+                <h2 class="work-detail-title"></h2>
+                <div class="work-content"></div>
+                <p class="work-detail-description"></p>
+                <div class="nav-buttons">
+                    <span class="nav-button prev-project">← Projet précédent</span>
+                    <span class="nav-button next-project">Projet suivant →</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

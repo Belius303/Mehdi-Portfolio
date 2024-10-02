@@ -1,0 +1,367 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 'League Spartan Bold', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #000;
+    transition: opacity 0.3s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header et Navigation */
+header {
+    background-color: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 1.5rem 0;
+}
+
+header.hidden {
+    transform: translateY(-100%);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0) 100%);
+    border-radius: 50px;
+    padding: 5px 20px 5px 5px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-container:hover {
+    background: linear-gradient(90deg, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 100%);
+    transform: scale(1.05);
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ffd700;
+}
+
+/* Work Section */
+.work-section {
+    padding: 250px 0;
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.work-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    padding: 2px;
+}
+
+.work-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+    transform: scale(1.02);
+}
+
+.work-item:nth-child(n) {
+    grid-column: span 1;
+}
+
+.work-item img,
+.work-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(255,215,0,0.5) 0%, rgba(255,215,0,0) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.work-item:hover .overlay {
+    opacity: 1;
+}
+
+.work-title {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Work Detail */
+/* ... */
+
+/* Work Detail */
+.work-detail {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    z-index: 999;
+    overflow-y: auto;
+    padding-top: 150px;
+}
+
+.work-detail .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+.work-content {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 600px;
+}
+
+.work-content img,
+.work-content video {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.work-detail-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    position: relative;
+    z-index: 1000;
+}
+
+.work-detail-description {
+    max-width: 600px;
+    margin-bottom: 2rem;
+    text-align: left;
+    position: relative;
+    z-index: 1000;
+}
+
+/* ... */
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    width: 100%;
+    max-width: 600px; 
+    margin-top: 20px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0) 100%);
+    border-radius: 50px;
+    padding: 5px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background: linear-gradient(90deg, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 100%);
+    transform: scale(1.05);
+}
+
+.nav-button.single {
+    margin-left: auto;
+}
+
+/* Styles pour la page profil */
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 180px 0;
+    gap: 5%;
+}
+
+.cv-container, .about-me-container {
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cv-image, .about-me-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.download-btn {
+    display: inline-block;
+    background-color: #ffd700;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #ffeb3b;
+}
+
+.contact-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Transitions */
+.work-section, .work-detail {
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .logo {
+        height: 40px;
+    }
+
+    .nav-links {
+        font-size: 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .work-detail-title {
+        font-size: 1.5rem;
+    }
+
+    .work-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .work-item:nth-child(n) {
+        grid-column: span 1;
+        aspect-ratio: 1 / 1;
+    }
+
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .cv-container, .about-me-container {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .work-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animation des titres */
+h1 span, h2 span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header.hidden {
+    transform: translateY(-100%);
+}
+
+header {
+    transition: transform 0.3s ease;
+}
