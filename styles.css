@@ -5,10 +5,10 @@
 }
 
 body {
-    font: 'League Spartan Bold', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: #fff;
-    background-color: #000;
+    background-color: #1e1f24;
     transition: opacity 0.3s ease;
 }
 
@@ -21,7 +21,7 @@ body {
 
 /* Header et Navigation */
 header {
-    background-color: #000;
+    background-color: #1e1f24;
     position: fixed;
     width: 100%;
     top: 0;
@@ -167,7 +167,7 @@ header.hidden {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #000;
+    background-color: #1e1f24;
     z-index: 999;
     overflow-y: auto;
     padding-top: 150px;
