@@ -212,3 +212,82 @@ window.addEventListener('scroll', handleNavbarScroll);
 
 // Remove the workDetail scroll event listener and use the global one instead
 workDetail.removeEventListener('scroll', handleWorkDetailScroll);
+
+// Add this function to handle responsive navigation
+function toggleMobileNav() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+  }
+
+  // Event Listeners
+window.addEventListener('scroll', handleNavbarScroll);
+logoContainer.addEventListener('click', scrollToProjects);
+
+document.querySelector('a[href="#work-section"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    scrollToProjects();
+});
+
+workItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const projectId = parseInt(item.dataset.id);
+        workSection.style.opacity = '0';
+        setTimeout(() => {
+            workSection.style.display = 'none';
+            showProject(projectId);
+        }, 300);
+    });
+});
+
+prevProjectBtn.addEventListener('click', () => {
+    if (currentProjectId > 1) {
+        showProject(currentProjectId - 1);
+    }
+});
+
+nextProjectBtn.addEventListener('click', () => {
+    if (currentProjectId < workItems.length) {
+        showProject(currentProjectId + 1);
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && workDetail.style.display === 'block') {
+        closeProjectDetail();
+    }
+});
+
+// Handle page transitions
+document.querySelectorAll('a:not([target="_blank"])').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (!this.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = href;
+            }, 300);
+        }
+    });
+});
+
+// Page load animation
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        document.body.style.opacity = '0';
+    }
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 50);
+});
+
+// Initialize mobile navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileNavToggle = document.createElement('button');
+    mobileNavToggle.classList.add('mobile-nav-toggle');
+    mobileNavToggle.innerHTML = '&#9776;'; // Hamburger icon
+    mobileNavToggle.addEventListener('click', toggleMobileNav);
+    
+    const navbar = document.querySelector('.navbar');
+    navbar.insertBefore(mobileNavToggle, navbar.firstChild);
+});

@@ -28,6 +28,7 @@ header {
     left: 0;
     z-index: 1000;
     padding: 1.5rem 0;
+    transition: transform 0.3s ease;
 }
 
 header.hidden {
@@ -36,7 +37,7 @@ header.hidden {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     width: 100%;
 }
@@ -45,10 +46,11 @@ header.hidden {
     display: flex;
     align-items: center;
     background: linear-gradient(90deg, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0) 100%);
-    border-radius: 50px;
-    padding: 5px 20px 5px 5px;
+    border-radius: 25px;
+    padding: 5px 15px;
     transition: transform 0.3s ease, background 0.3s ease;
     cursor: pointer;
+    margin-top: 0.5rem;
 }
 
 .logo-container:hover {
@@ -57,13 +59,13 @@ header.hidden {
 }
 
 .logo {
-    height: 50px;
+    height: 70px;
     width: auto;
     margin-right: 10px;
 }
 
 .name {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: white;
 }
@@ -71,11 +73,14 @@ header.hidden {
 .nav-links {
     display: flex;
     list-style: none;
-    margin-left: auto;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links li {
-    margin-left: 2rem;
+    margin-left: 0.5rem;
 }
 
 .nav-links a {
@@ -84,6 +89,9 @@ header.hidden {
     font-weight: bold;
     font-size: 1.2rem;
     transition: color 0.3s ease;
+    padding: 5px 10px;
+    
+    
 }
 
 .nav-links a:hover, .nav-links a.active {
@@ -365,3 +373,14 @@ header.hidden {
 header {
     transition: transform 0.3s ease;
 }
+
+/* Mobile Navigation Styles */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
