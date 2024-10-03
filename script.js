@@ -1,16 +1,8 @@
 // Sélection des éléments du DOM
 const header = document.querySelector('header');
 const workSection = document.getElementById('work-section');
-const workDetail = document.getElementById('work-detail');
-const workItems = document.querySelectorAll('.work-item');
-const workDetailTitle = workDetail.querySelector('.work-detail-title');
-const workDetailDescription = workDetail.querySelector('.work-detail-description');
-const workDetailContent = workDetail.querySelector('.work-content');
-const prevProjectBtn = workDetail.querySelector('.prev-project');
-const nextProjectBtn = workDetail.querySelector('.next-project');
 const logoContainer = document.querySelector('.logo-container');
 
-let currentProjectId = 0;
 let lastScrollTop = 0;
 
 // Gestion du scroll pour la navbar
@@ -26,101 +18,24 @@ function handleNavbarScroll() {
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 }
 
-// Fonction pour afficher un projet avec animation
-function showProject(id) {
-    currentProjectId = id;
-    const project = workItems[id - 1];
-    const video = project.querySelector('video');
-
-    workDetail.style.opacity = '0';
-    setTimeout(() => {
-        workDetailTitle.textContent = project.querySelector('.work-title').textContent;
-        workDetailDescription.textContent = 'Description de la vidéo ' + id + '. Remplacez ce texte par la description réelle de chaque vidéo.';
-
-        const videoClone = video.cloneNode(true);
-        videoClone.controls = true;
-        workDetailContent.innerHTML = '';
-        workDetailContent.appendChild(videoClone);
-
-        updateNavigationButtons();
-        workDetail.style.opacity = '1';
-    }, 300);
-}
-
-// Fermeture du détail du projet avec animation
-function closeProjectDetail() {
-    workDetail.style.opacity = '0';
-    setTimeout(() => {
-        workDetail.style.display = 'none';
-        workSection.style.display = 'block';
-        workSection.style.opacity = '0';
-        setTimeout(() => {
-            workSection.style.opacity = '1';
-        }, 50);
-        window.removeEventListener('scroll', handleNavbarScroll);
-    }, 300);
-}
-
-// Ajout des écouteurs d'événements pour chaque élément de travail
-workItems.forEach(item => {
-    item.addEventListener('click', () => {
-        const projectId = parseInt(item.dataset.id);
-        workSection.style.opacity = '0';
-        setTimeout(() => {
-            workSection.style.display = 'none';
-            workDetail.style.display = 'block';
-            showProject(projectId);
-            window.addEventListener('scroll', handleNavbarScroll);
-        }, 300);
-    });
-});
-
-// Mise à jour des boutons de navigation
-function updateNavigationButtons() {
-    if (currentProjectId === 1) {
-        prevProjectBtn.style.display = 'none';
-        nextProjectBtn.style.display = 'block';
-        nextProjectBtn.classList.add('single');
-    } else if (currentProjectId === workItems.length) {
-        prevProjectBtn.style.display = 'block';
-        nextProjectBtn.style.display = 'none';
-        prevProjectBtn.classList.remove('single');
-    } else {
-        prevProjectBtn.style.display = 'block';
-        nextProjectBtn.style.display = 'block';
-        nextProjectBtn.classList.remove('single');
-    }
-}
-
-// Gestion des clics sur les boutons de navigation
-prevProjectBtn.addEventListener('click', () => {
-    if (currentProjectId > 1) {
-        showProject(currentProjectId - 1);
-    }
-});
-
-nextProjectBtn.addEventListener('click', () => {
-    if (currentProjectId < workItems.length) {
-        showProject(currentProjectId + 1);
-    }
-});
-
-// Défilement fluide vers la section des projets et fermeture du détail
+// Défilement fluide vers la section des projets
 function scrollToProjects() {
-    closeProjectDetail();
-    setTimeout(() => {
+    if (workSection) {
         workSection.scrollIntoView({ behavior: 'smooth' });
-    }, 300);
+    }
 }
 
 // Gestion du clic sur le logo et "Mehdi Imani"
 logoContainer.addEventListener('click', scrollToProjects);
 
 // Défilement fluide vers la section des projets pour le lien "Projets"
-document.querySelector('a[href="#work-section"]').addEventListener('click', function(e) {
-    e.preventDefault();
-    scrollToProjects();
-});
+const projectsLink = document.querySelector('a[href="#work-section"]');
+if (projectsLink) {
+    projectsLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToProjects();
+    });
+}
 
 // Gestion de la navigation active
 document.addEventListener('DOMContentLoaded', () => {
@@ -128,8 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname;
 
     navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPath || 
-            (currentPath === '/' && link.getAttribute('href') === '#work-section')) {
+        if ((currentPath.includes('index.html') || currentPath === '/') && link.getAttribute('href') === '#work-section') {
+            link.classList.add('active');
+        } else if (link.getAttribute('href') === currentPath) {
             link.classList.add('active');
         }
 
@@ -138,23 +54,39 @@ document.addEventListener('DOMContentLoaded', () => {
             this.classList.add('active');
         });
     });
-});
 
-// Fermeture du détail du projet avec la touche Echap
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && workDetail.style.display === 'block') {
-        closeProjectDetail();
+    // Fonctionnalité d'agrandissement des images
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const closeBtn = document.getElementById('close-modal');
+    const zoomableImages = document.querySelectorAll('.zoomable-image');
+
+    if (modal && modalImg && closeBtn) {
+        zoomableImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImg.src = img.src;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
     }
 });
 
 // Ajout de l'effet de fondu pour les changements de page
-document.querySelectorAll('a, .logo-container').forEach(link => {
+document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', function(e) {
-        if (this.getAttribute('target') !== '_blank' && 
-            (this.tagName === 'A' && !this.getAttribute('href').startsWith('#')) || 
-            this.classList.contains('logo-container')) {
+        if (this.getAttribute('target') !== '_blank' && !this.getAttribute('href').startsWith('#')) {
             e.preventDefault();
-            const href = this.getAttribute('href') || 'index.html';
+            const href = this.getAttribute('href');
             document.body.style.opacity = '0';
             setTimeout(() => {
                 window.location.href = href;
@@ -194,92 +126,14 @@ function animateHeadings() {
 // Call animateHeadings on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', animateHeadings);
 
-// Modify the handleNavbarScroll function
-function handleNavbarScroll() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop && scrollTop > 50) {
-        // Scroll down
-        header.classList.add('hidden');
-    } else {
-        // Scroll up
-        header.classList.remove('hidden');
-    }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-}
-
 // Add scroll event listener to window
 window.addEventListener('scroll', handleNavbarScroll);
-
-// Remove the workDetail scroll event listener and use the global one instead
-workDetail.removeEventListener('scroll', handleWorkDetailScroll);
 
 // Add this function to handle responsive navigation
 function toggleMobileNav() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
-  }
-
-  // Event Listeners
-window.addEventListener('scroll', handleNavbarScroll);
-logoContainer.addEventListener('click', scrollToProjects);
-
-document.querySelector('a[href="#work-section"]').addEventListener('click', function(e) {
-    e.preventDefault();
-    scrollToProjects();
-});
-
-workItems.forEach(item => {
-    item.addEventListener('click', () => {
-        const projectId = parseInt(item.dataset.id);
-        workSection.style.opacity = '0';
-        setTimeout(() => {
-            workSection.style.display = 'none';
-            showProject(projectId);
-        }, 300);
-    });
-});
-
-prevProjectBtn.addEventListener('click', () => {
-    if (currentProjectId > 1) {
-        showProject(currentProjectId - 1);
-    }
-});
-
-nextProjectBtn.addEventListener('click', () => {
-    if (currentProjectId < workItems.length) {
-        showProject(currentProjectId + 1);
-    }
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && workDetail.style.display === 'block') {
-        closeProjectDetail();
-    }
-});
-
-// Handle page transitions
-document.querySelectorAll('a:not([target="_blank"])').forEach(link => {
-    link.addEventListener('click', function(e) {
-        if (!this.getAttribute('href').startsWith('#')) {
-            e.preventDefault();
-            const href = this.getAttribute('href');
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                window.location.href = href;
-            }, 300);
-        }
-    });
-});
-
-// Page load animation
-window.addEventListener('pageshow', function(event) {
-    if (event.persisted) {
-        document.body.style.opacity = '0';
-    }
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 50);
-});
+}
 
 // Initialize mobile navigation
 document.addEventListener('DOMContentLoaded', () => {
@@ -291,3 +145,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     navbar.insertBefore(mobileNavToggle, navbar.firstChild);
 });
+
+
+// Define colors for each video
+const videoColors = {
+    1: '#253f4b', // Orange rougeâtre
+    2: '#5d455f', // Bleu
+    3: '#804040', // Rose
+    5: '#8f8b66',  // Violet
+    5: '#537d90',
+    6:'#5d455f',
+    7:'#253f4b'
+};
+
+// Function to change background and navbar color based on visible video
+function changeColors() {
+    const videos = document.querySelectorAll('.work-item');
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    const navbar = document.querySelector('header');
+
+    videos.forEach(videoItem => {
+        const rect = videoItem.getBoundingClientRect();
+        if (rect.top < scrollPosition && rect.bottom > scrollPosition) {
+            const videoId = videoItem.getAttribute('data-id');
+            const color = videoColors[videoId];
+            if (color) {
+                document.body.style.backgroundColor = color;
+                navbar.style.backgroundColor = color;
+                // Adjust text color for better contrast
+                if (isColorLight(color)) {
+                    document.body.style.color = '#000';
+                    navbar.style.color = '#000';
+                } else {
+                    document.body.style.color = '#fff';
+                    navbar.style.color = '#fff';
+                }
+            }
+        }
+    });
+}
+
+// Helper function to determine if a color is light or dark
+function isColorLight(color) {
+    const hex = color.replace('#', '');
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+    const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    return brightness > 155;
+}
+
+// Add scroll event listener to change colors
+window.addEventListener('scroll', changeColors);
+
+// Initialize colors on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Existing DOMContentLoaded code...
+
+    // Initialize colors
+    if (window.location.pathname !== '/profil.html') {
+        changeColors();
+    }
+});
+
+
+

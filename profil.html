@@ -4,39 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mehdi Imani - Profil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header id="navbar">
         <div class="container">
             <nav class="navbar">
-                <div class="logo-container" onclick="window.location.href='index.html';">
-                    <img src="mehdilogo.png" alt="Logo Mehdi Imani" class="logo">
-                    <span class="name">Mehdi Imani</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html#work-section" class="nav-link">Projets</a></li>
-                    <li><a href="profil.html" class="nav-link active">Profil</a></li>
-                </ul>
-            </nav>
-        </div>
+            <div class="logo-container" onclick="window.location.href='index.html';">
+                <img src="mehdilogo.png" alt="Logo Mehdi Imani" class="logo">
+                <span class="name">Mehdi Imani</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#work-section" class="nav-link">Projets</a></li>
+                <li><a href="profil.html" class="nav-link active">Profil</a></li>
+            </ul>
+        </nav>
+    </div>
     </header>
 
     <main role="main">
         <div class="container">
             <div class="profile-container">
                 <div class="cv-container">
-                    <img src="oeuvres/1_CV Mehdi Imani-1.png" alt="CV Mehdi Imani" class="cv-image">
-                    <a href="oeuvres/1_CV Mehdi Imani-1.png" download class="download-btn">Télécharger le CV</a>
+                    <img src="oeuvres/1_CV%20Mehdi%20Imani-1.png" alt="CV Mehdi Imani" class="cv-image zoomable-image">
+                    <a href="oeuvres/1_CV%20Mehdi%20Imani-1.png" class="download-btn" download="">Télécharger le CV</a>
                 </div>
-
                 <div class="about-me-container">
-                    <img src="oeuvres/1_Lettre de motivation Mehdi IMANI-1.png" alt="À propos de Mehdi Imani" class="about-me-image">
+                    <img src="oeuvres/1_Lettre%20de%20motivation%20Mehdi%20IMANI-1.png" alt="À propos de Mehdi Imani" class="about-me-image zoomable-image">
                 </div>
             </div>
-
-            
+        </div>
     </main>
+
+    <div id="image-modal" class="image-modal">
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Image agrandie">
+            <button id="close-modal" class="close-modal">&larr;</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
