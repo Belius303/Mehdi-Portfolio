@@ -41,21 +41,16 @@ header.hidden {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    background: linear-gradient(90deg, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0) 100%);
     border-radius: 35px;
     padding: 5px 15px;
     transition: transform 0.3s ease, background 0.3s ease;
     cursor: pointer;
-}
-
-.logo-container:hover {
-    background: linear-gradient(90deg, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 100%);
-    transform: scale(1.05);
 }
 
 .logo {
@@ -73,10 +68,12 @@ header.hidden {
 .nav-links {
     display: flex;
     list-style: none;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
 }
 
 .nav-links li {
     margin-left: 2rem;
+    transition: color 0.3s ease;
 }
 
 .nav-links a {
@@ -84,9 +81,8 @@ header.hidden {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
-    transition: color 0.3s ease;
     padding: 5px 10px;
-    transition: color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.3s ease;
 }
 
 .nav-links a:hover, .nav-links a.active {
@@ -101,7 +97,7 @@ header.hidden {
 
 .title {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 10rem;
 }
 
 .work-gallery {
@@ -233,7 +229,7 @@ header.hidden {
     }
 
     .title {
-        font-size: 2rem;
+        font-size: 2.2rem;   
     }
 
     .profile-container {
