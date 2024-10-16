@@ -3,71 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Mehdi Imani - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-
-    <!-- Favicon -->
-    <link rel="icon" href="mehdilogo.png" type="image/png">
-
 </head>
 <body>
-    <header id="navbar">
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo-container" onclick="window.location.href='index.html';">
-                    <img src="mehdilogo.png" alt="Logo Mehdi Imani" class="logo">
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#work-section" class="nav-link">Projets</a></li>
-                    <li><a href="profil.html" class="nav-link">Profil</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="work-section" class="work-section">
-            <div class="container">
-                <div class="work-gallery">
-                    <div class="work-item" data-id="1">
-                        <video src="oeuvres/3_Démo Mehdi Imani alternance.mp4"  autoplay loop muted playsinline controls ></video>
-                        <div class="overlay">
-                        </div>
-                    </div>
-                    <div class="work-item" data-id="2">
-                        <video src="oeuvres/Boule quies.mp4"   autoplay loop muted playsinline controls></video>
-                        <div class="overlay">
-                        </div>
-                    </div>
-                    <div class="work-item" data-id="3">
-                        <video src="oeuvres/FOOTBAR_E004_ÉVÉNEMENT BORDEAUX_LONGUE.mp4"  autoplay loop muted playsinline controls></video>
-                        <div class="overlay">
-                        </div>
-                    </div>
-                    <div class="work-item" data-id="4">
-                        <video src="oeuvres/Goon festival !.mp4"  autoplay loop muted playsinline controls></video>
-                        <div class="overlay">
-                        </div>
-                    </div>
-                    <div class="work-item" data-id="5">
-                        <video src="oeuvres/LA-ROCHE-POSAY_Mehdi Imani.mp4"  autoplay loop muted playsinline controls></video>
-                        <div class="overlay">
-                        </div>
-                    </div>
-                    <div class="work-item" data-id="6">
-                        <video src="oeuvres/LCS FAMILY Imani Mehdi.mp4"  autoplay loop muted playsinline controls></video>
-                        <div class="overlay">
-                        </div>
-                    </div>
-                    <div class="work-item" data-id="7">
-                        <video src="oeuvres/QSD 6 nations rugby.mp4"  autoplay loop muted playsinline controls></video>
-                        <div class="overlay">
-                        </div>
-                    </div>
-                </div>
+    <main role="main">
+        <div class="main-content">
+            <div class="about-me-container">
+                <img src="oeuvres/1_Lettre%20de%20motivation%20Mehdi%20IMANI-1.png" alt="À propos de Mehdi Imani" class="about-me-image zoomable-image">
             </div>
-        </section>
+            <div class="logo-container">
+                <img src="mehdilogo.png" alt="Logo Mehdi Imani" class="logo">
+            </div>
+            <div class="cv-container">
+                <img src="oeuvres/1_CV%20Mehdi%20Imani-1.png" alt="CV Mehdi Imani" class="cv-image zoomable-image">
+            </div>
+            <div class="prism-container">
+                <div class="prism" id="prism1"><video src="oeuvres/3_Démo Mehdi Imani alternance.mp4" muted loop></video></div>
+                <div class="prism" id="prism2"><video src="oeuvres/Boule quies.mp4" muted loop></video></div>
+                <div class="prism" id="prism3"><video src="oeuvres/FOOTBAR_E004_ÉVÉNEMENT BORDEAUX_LONGUE.mp4" muted loop></video></div>
+                <div class="prism" id="prism4"><video src="oeuvres/Goon festival !.mp4" muted loop></video></div>
+                <div class="prism" id="prism5"><video src="oeuvres/LA-ROCHE-POSAY_Mehdi Imani.mp4" muted loop></video></div>
+                <div class="prism" id="prism6"><video src="oeuvres/LCS FAMILY Imani Mehdi.mp4" muted loop></video></div>
+                <div class="prism" id="prism7"><video src="oeuvres/QSD 6 nations rugby.mp4" muted loop></video></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img id="modal-image" src="" alt="Image agrandie">
+        <a id="download-btn" class="download-btn" href="" download style="display: none;">Télécharger le CV</a>
+    </div>
+
+    <div id="video-modal" class="video-modal">
+        <span class="close-modal">&times;</span>
+        <video id="modal-video" controls></video>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
