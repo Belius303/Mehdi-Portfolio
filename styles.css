@@ -42,11 +42,12 @@ body {
 }
 
 .main-content {
+    margin-top: 12vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    min-height: 100vh;
+    min-height: 80vh;
     padding: 1rem;
     position: relative;
 }
@@ -56,32 +57,64 @@ body {
     position: relative;
     z-index: 10;
     margin-bottom: 2rem;
-    width: 100%;
+    width: auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
-/* Logo animation */
-@keyframes bounce {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
-
-/* Logo element */
+/* Logo element - sans animation bounce */
 .logo {
-    width: 60px;
+    width: min(15vw, 200px);
     height: auto;
     cursor: pointer;
-    animation: bounce 2s ease-in-out infinite;
+    transition: transform 0.3s ease;
 }
 
 .logo:hover {
-    animation: none;
     transform: scale(1.1);
+}
+
+/* Style pour le lien À propos */
+.about-link {
+    width: min(20vw, 280px);
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.about-link:hover {
+    transform: scale(1.1);
+}
+
+/* Ajustement pour mobile */
+@media screen and (max-width: 767px) {
+    .about-link {
+        width: 180px;
+    }
+}
+
+/* Projects and CV containers */
+.projects-container,
+.cv-link-container {
+    flex: 0 1 300px;
+    margin: 1.5rem;
+    transition: all 0.5s ease;
+}
+
+.projects-image,
+.cv-link-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.projects-image:hover,
+.cv-link-image:hover {
+    transform: scale(1.05);
 }
 
 /* About me component */
@@ -99,6 +132,208 @@ body {
     word-spacing: normal;
 }
 
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    fill: #ffd700;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 2001;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Video Carousel */
+.video-carousel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1d1d24;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px;
+    z-index: 1000;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-item {
+    position: absolute;
+    width: 480px;
+    height: 270px;
+    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.video-item.active {
+    z-index: 10;
+    transform: translateZ(200px) scale(1.15);
+}
+
+.video-item.active .video-wrapper {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.video-reflection {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    transform-origin: top;
+    transform: scaleY(-1);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.video-reflection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.7) 0%,
+        rgba(255, 255, 255, 0.5) 10%,
+        rgba(255, 255, 255, 0.3) 30%,
+        rgba(255, 255, 255, 0.1) 60%,
+        transparent 100%
+    );
+    z-index: 2;
+}
+
+.video-reflection::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: scaleY(-1);
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+.video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+}
+
+.video-item.active .video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 215, 0, 0.2) 0%,
+        transparent 70%
+    );
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* Video Modal */
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.video-modal video {
+    margin: auto;
+    display: block;
+    width: 95%;
+    max-width: 700px;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal.active .modal-content {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Media Queries */
 @media screen and (max-width: 767px) {
     .mobile-title {
         display: block;
@@ -118,201 +353,43 @@ body {
         text-align: center;
     }
 
-    .about-me-container {
-        order: 2;
-        width: 100%;
-        margin: 2rem auto;
-        align-self: center;
-        transform: translateX(15%);
+    .video-item {
+        width: 300px;
+        height: 225px;
     }
 
-    .about-me-text {
-        word-spacing: normal;
+    .video-container {
+        height: 50vh;
     }
 
-    .cv-container {
-        order: 3;
-        width: 90%;
-        margin: 2rem auto;
-        align-self: center;
-        transform: translateX(15%);
+    .close-btn {
+        top: -30px;
+        right: -30px;
+        width: 25px;
+        height: 25px;
     }
 
     .logo {
         width: 120px;
     }
+}
 
-    .prism-container {
-        width: 200px;
-        height: 200px;
+@media screen and (max-width: 480px) {
+    .video-item {
+        width: 240px;
+        height: 180px;
     }
 
-    .prism {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* Container components */
-.cv-container,
-.about-me-container {
-    flex: 0 1 auto;
-    width: 80%;
-    max-width: 300px;
-    margin: 4rem 0;
-    transition: opacity 0.5s ease;
-    align-self: flex-start;
-    margin-top: 4rem;
-}
-
-.cv-image,
-.about-me-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.cv-image:hover,
-.about-me-image:hover {
-    transform: scale(1.05);
-}
-
-@keyframes rotate {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-}
-
-/* Prism container component */
-.prism-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 250px;
-    height: 250px;
-    display: none;
-    animation: rotate 60s linear infinite;
-}
-
-/* Individual prism component */
-.prism {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%)
-        translate(var(--translateX), var(--translateY))
-        rotate(calc(-1 * var(--rotation)));
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-/* Prism hover effect */
-.prism:hover {
-    transform: translate(-50%, -50%)
-        translate(var(--translateX), var(--translateY))
-        rotate(calc(-1 * var(--rotation))) scale(1.1);
-}
-
-/* Prism video styling */
-.prism video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Modal styles */
-/* Modal components */
-.image-modal,
-.video-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    overflow: auto;
-}
-
-/* Modal content */
-.image-modal img,
-.video-modal video {
-    margin: auto;
-    display: block;
-    width: 95%;
-    max-width: 700px;
-    max-height: 80vh;
-    object-fit: contain;
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #f1f1f1;
-    font-size: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.close-modal:hover,
-.close-modal:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Download button component */
-.download-btn {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffd700;
-    color: #000;
-    padding: 8px 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-/* Download button hover state */
-.download-btn:hover {
-    background-color: #ffeb3b;
-}
-
-/* Media Queries */
-@media screen and (min-width: 480px) {
-    .logo {
-        width: 80px;
-    }
-
-    .prism-container {
-        width: 300px;
-        height: 300px;
-    }
-
-    .prism {
-        width: 80px;
-        height: 80px;
+    .close-btn {
+        top: -30px;
+        right: -30px;
+        width: 25px;
+        height: 25px;
     }
 }
 
 /* Tablet and desktop breakpoint */
 @media screen and (min-width: 768px) {
-    /* Desktop content layout */
     .main-content {
         flex-direction: row;
         justify-content: space-around;
@@ -321,26 +398,6 @@ body {
     .logo-container {
         margin-bottom: 0;
         width: auto;
-    }
-
-    .logo {
-        width: min(15vw, 200px);
-    }
-
-    .cv-container,
-    .about-me-container {
-        width: 30%;
-        max-width: none;
-        margin-top: 4rem;
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 0;
-    }
-
-    .cv-image,
-    .about-me-image {
-        max-width: 100%;
-        max-height: 75vh;
     }
 
     .about-me-text {
@@ -352,14 +409,13 @@ body {
         overflow: auto;
     }
 
-    .prism-container {
-        width: 400px;
-        height: 400px;
+    .video-container {
+        height: 60vh;
     }
 
-    .prism {
-        width: 100px;
-        height: 100px;
+    .video-item {
+        width: 400px;
+        height: 300px;
     }
 }
 
@@ -370,17 +426,253 @@ body {
 }
 
 @media screen and (min-width: 1024px) {
-    .prism-container {
-        width: 600px;
-        height: 600px;
+    .about-me-text {
+        font-size: min(1.4vw, 1.4rem);
+    }
+}
+
+/* CV image styles */
+.cv-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Download button */
+.download-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #ffd700;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #ffed4a;
+}
+
+/* Modification des styles de la modale CV */
+.cv-modal .modal-content {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajout des styles pour la flèche de retour */
+.return-arrow {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    fill: #ffd700;
+    cursor: pointer;
+    z-index: 1500;
+    transition: transform 0.3s ease;
+    transform: scaleX(-1);
+}
+
+.return-arrow:hover {
+    transform: scaleX(-1) scale(1.1);
+}
+
+/* Style pour le titre des vidéos */
+.video-title {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100%;
+    color: #ffd700;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Style pour la modale vidéo */
+.video-fullscreen-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-fullscreen-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16/9;
+}
+
+.video-fullscreen-content video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.video-fullscreen-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    fill: #ffd700;
+    cursor: pointer;
+    z-index: 2001;
+}
+
+.video-fullscreen-close:hover {
+    transform: scale(1.1);
+}
+
+/* Effet de brillance pour la surface réfléchissante */
+.video-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 99.9%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 25%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 100%
+    );
+    z-index: 3;
+}
+
+/* Ajustement pour la vidéo active */
+.video-item.active .video-reflection::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.6) 10%,
+        rgba(255, 255, 255, 0.4) 30%,
+        rgba(255, 255, 255, 0.2) 60%,
+        transparent 100%
+    );
+}
+
+/* Ajustement des tailles pour mobile */
+@media screen and (max-width: 767px) {
+    .logo {
+        width: 160px; /* Réduit de 180px à 160px */
     }
 
-    .prism {
-        width: 120px;
-        height: 120px;
+    .about-link {
+        width: 180px; /* Réduit de 200px à 180px */
+    }
+
+    /* Correction du défilement pour le texte "À propos" */
+    .about-me-modal .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+        margin: 20px;
+        padding-bottom: 40px; /* Espace supplémentaire en bas */
     }
 
     .about-me-text {
-        font-size: min(1.4vw, 1.4rem);
+        font-size: 1.1rem; /* Taille de texte légèrement réduite pour mobile */
+        line-height: 1.4;
+        overflow-y: visible; /* Permet le défilement */
+        max-height: none; /* Supprime la limitation de hauteur */
+    }
+}
+
+/* Ajustement pour les très petits écrans */
+@media screen and (max-width: 480px) {
+    .logo {
+        width: 170px;
+    }
+
+    .about-link {
+        width: 200px;
+    }
+}
+
+/* Styles pour le titre */
+.site-title {
+    position: fixed;
+    top: 5vh;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-image {
+    width: 60%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Classes d'affichage conditionnel */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+    color: #ffd700;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Suppression de l'ancien titre mobile */
+.mobile-title {
+    display: none;
+}
+
+/* Ajustement de l'espacement du contenu principal */
+.main-content {
+    margin-top: 12vh;
+    min-height: 80vh;
+}
+
+/* Media Queries pour mobile */
+@media screen and (max-width: 767px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .site-title {
+        position: fixed;
+        top: 2vh;
+        width: 100%;
+    }
+
+    .main-content {
+        margin-top: 10vh;
     }
 }

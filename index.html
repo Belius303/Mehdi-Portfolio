@@ -12,113 +12,208 @@
     </head>
     <body>
         <main role="main">
-            <h1 class="mobile-title">Mehdi Imani</h1>
+            <!-- Nouveau conteneur pour le titre -->
+            <div class="site-title">
+                <img
+                    src="titre.png"
+                    alt="Titre du site"
+                    class="title-image desktop-only"
+                />
+                <h1 class="mobile-only">Mehdi Imani</h1>
+            </div>
+
             <div class="main-content">
-                <div class="about-me-container">
-                    <div class="about-me-text">
-                        Bonjour,<br /><br />
-                        Actuellement en 2ème année de BTS Audiovisuel option
-                        montage, je souhaiterais déposer ma candidature pour un
-                        poste d'alternant en montage. Mon rythme est de 2
-                        semaines en cours et 2 semaines en entreprise.<br /><br />
-                        J'ai effectué mes stages chez La Maison Noire, une
-                        agence spécialisée dans le luxe et la cosmétique, ainsi
-                        que chez Kop Media, une agence et un média dédiés au
-                        sport. Mes missions étaient de décliner des vidéos sous
-                        différents formats (9/16, 4/3...), monter des vidéos
-                        pour leurs réseaux sociaux et créer des animations
-                        graphiques.<br /><br />
-                        Durant ces deux stages, j'étais donc motion designer et
-                        monteur vidéo. Cela m'a permis d'acquérir une très
-                        solide maîtrise des outils de création de la suite
-                        Adobe, surtout After Effect et Premier Pro. J'ai
-                        également des bases en 3D sur Blender.<br /><br />
-                        Très motivé, curieux et doté d'un bon sens artistique
-                        grâce à mes loisirs (dessin, peinture, photo...), je
-                        suis convaincu que je pourrais contribuer activement à
-                        la réalisation de vos projets.
-                    </div>
+                <!-- Container Mes Projets -->
+                <div class="projects-container">
+                    <img
+                        src="PROJET.png"
+                        alt="Mes Projets"
+                        class="projects-image"
+                    />
                 </div>
+
+                <!-- Container Logo -->
                 <div class="logo-container">
                     <img
                         src="mehdilogo.png"
                         alt="Logo Mehdi Imani"
                         class="logo"
                     />
-                </div>
-                <div class="cv-container">
                     <img
-                        src="oeuvres/1_CV%20Mehdi%20Imani-1.png"
-                        alt="CV Mehdi Imani"
-                        class="cv-image zoomable-image"
+                        src="A PROPOS.png"
+                        alt="À propos"
+                        class="about-link"
                     />
                 </div>
-                <div class="prism-container">
-                    <div class="prism" id="prism1">
-                        <video
-                            src="oeuvres/3_Démo Mehdi Imani alternance.mp4"
-                            muted
-                            loop
-                        ></video>
+
+                <!-- Container Mon CV -->
+                <div class="cv-link-container">
+                    <img src="MON CV.png" alt="Mon CV" class="cv-link-image" />
+                </div>
+
+                <!-- Video Carousel -->
+                <div class="video-carousel">
+                    <!-- Flèche de retour -->
+                    <svg class="return-arrow" viewBox="0 0 24 24">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                    
+                    <div class="video-container">
+                        <div class="video-item">
+                            <div class="video-title">Démo</div>
+                            <div class="video-wrapper">
+                                <video
+                                    src="oeuvres/3_Demo_Mehdi_Imani_alternance.mp4"
+                                    loop
+                                    muted
+                                    preload="auto"
+                                    playsinline
+                                ></video>
+                                <div class="video-reflection"></div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-title">Boule quies</div>
+                            <div class="video-wrapper">
+                                <video
+                                    src="oeuvres/Boule quies.mp4"
+                                    loop
+                                    muted
+                                    preload="auto"
+                                    playsinline
+                                ></video>
+                                <div class="video-reflection"></div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-title">FOOTBAR_E004_EVENEMENT_BORDEAUX_LONGUE</div>
+                            <div class="video-wrapper">
+                                <video
+                                    src="oeuvres/FOOTBAR_E004_EVENEMENT_BORDEAUX_LONGUE.mp4"
+                                    loop
+                                    muted
+                                    preload="auto"
+                                    playsinline
+                                ></video>
+                                <div class="video-reflection"></div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-title">Goon festival !</div>
+                            <div class="video-wrapper">
+                                <video
+                                    src="oeuvres/Goon festival !.mp4"
+                                    loop
+                                    muted
+                                    preload="auto"
+                                    playsinline
+                                ></video>
+                                <div class="video-reflection"></div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-title">LA-ROCHE-POSAY</div>
+                            <div class="video-wrapper">
+                                <video
+                                    src="oeuvres/LA-ROCHE-POSAY_Mehdi Imani.mp4"
+                                    loop
+                                    muted
+                                    preload="auto"
+                                    playsinline
+                                ></video>
+                                <div class="video-reflection"></div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-title">LCS FAMILY</div>
+                            <div class="video-wrapper">
+                                <video
+                                    src="oeuvres/LCS FAMILY Imani Mehdi.mp4"
+                                    loop
+                                    muted
+                                    preload="auto"
+                                    playsinline
+                                ></video>
+                                <div class="video-reflection"></div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-title">QSD 6 nations rugby</div>
+                            <div class="video-wrapper">
+                                <video
+                                    src="oeuvres/QSD 6 nations rugby.mp4"
+                                    loop
+                                    muted
+                                    preload="auto"
+                                    playsinline
+                                ></video>
+                                <div class="video-reflection"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="prism" id="prism2">
-                        <video src="oeuvres/Boule quies.mp4" muted loop></video>
+                </div>
+
+                <!-- Modal About Me -->
+                <div class="about-me-modal modal">
+                    <div class="modal-content">
+                        <svg class="close-btn" viewBox="0 0 24 24">
+                            <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                            />
+                        </svg>
+                        <div class="about-me-text">
+                            Bonjour,<br /><br />
+                            Actuellement en 2ème année de BTS Audiovisuel option
+                            montage, je souhaiterais déposer ma candidature pour
+                            un poste d'alternant en montage. Mon rythme est de 2
+                            semaines en cours et 2 semaines en entreprise.<br /><br />
+                            J'ai effectué mes stages chez La Maison Noire, une
+                            agence spécialisée dans le luxe et la cosmétique,
+                            ainsi que chez Kop Media, une agence et un média
+                            dédiés au sport. Mes missions étaient de décliner
+                            des vidéos sous différents formats (9/16, 4/3...),
+                            monter des vidéos pour leurs réseaux sociaux et
+                            créer des animations graphiques.<br /><br />
+                            Durant ces deux stages, j'étais donc motion designer
+                            et monteur vidéo. Cela m'a permis d'acquérir une
+                            très solide maîtrise des outils de création de la
+                            suite Adobe, surtout After Effect et Premier Pro.
+                            J'ai également des bases en 3D sur Blender.<br /><br />
+                            Très motivé, curieux et doté d'un bon sens
+                            artistique grâce à mes loisirs (dessin, peinture,
+                            photo...), je suis convaincu que je pourrais
+                            contribuer activement à la réalisation de vos
+                            projets.
+                        </div>
                     </div>
-                    <div class="prism" id="prism3">
-                        <video
-                            src="oeuvres/FOOTBAR_E004_ÉVÉNEMENT BORDEAUX_LONGUE.mp4"
-                            muted
-                            loop
-                        ></video>
-                    </div>
-                    <div class="prism" id="prism4">
-                        <video
-                            src="oeuvres/Goon festival !.mp4"
-                            muted
-                            loop
-                        ></video>
-                    </div>
-                    <div class="prism" id="prism5">
-                        <video
-                            src="oeuvres/LA-ROCHE-POSAY_Mehdi Imani.mp4"
-                            muted
-                            loop
-                        ></video>
-                    </div>
-                    <div class="prism" id="prism6">
-                        <video
-                            src="oeuvres/LCS FAMILY Imani Mehdi.mp4"
-                            muted
-                            loop
-                        ></video>
-                    </div>
-                    <div class="prism" id="prism7">
-                        <video
-                            src="oeuvres/QSD 6 nations rugby.mp4"
-                            muted
-                            loop
-                        ></video>
+                </div>
+
+                <!-- Modal CV -->
+                <div class="cv-modal modal">
+                    <div class="modal-content">
+                        <svg class="close-btn" viewBox="0 0 24 24">
+                            <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                            />
+                        </svg>
+                        <img
+                            src="oeuvres/1_CV%20Mehdi%20Imani-1.png"
+                            alt="CV Mehdi Imani"
+                            class="cv-image"
+                        />
                     </div>
                 </div>
             </div>
         </main>
 
-        <div id="image-modal" class="image-modal">
-            <span class="close-modal">&times;</span>
-            <img id="modal-image" src="" alt="Image agrandie" />
-            <a
-                id="download-btn"
-                class="download-btn"
-                href=""
-                download
-                style="display: none"
-                >Télécharger le CV</a
-            >
-        </div>
-
-        <div id="video-modal" class="video-modal">
-            <span class="close-modal">&times;</span>
-            <video id="modal-video" controls></video>
+        <!-- Ajout de la modale plein écran pour les vidéos -->
+        <div class="video-fullscreen-modal">
+            <div class="video-fullscreen-content">
+                <svg class="video-fullscreen-close" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+                <video controls></video>
+            </div>
         </div>
 
         <script src="script.js"></script>
