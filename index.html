@@ -1,47 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi Imani - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <main role="main">
-        <div class="main-content">
-            <div class="about-me-container">
-                <img src="oeuvres/1_Lettre%20de%20motivation%20Mehdi%20IMANI-1.png" alt="À propos de Mehdi Imani" class="about-me-image zoomable-image">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mehdi Imani - Portfolio</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <main role="main">
+            <h1 class="mobile-title">Mehdi Imani</h1>
+            <div class="main-content">
+                <div class="about-me-container">
+                    <div class="about-me-text">
+                        Bonjour,<br /><br />
+                        Actuellement en 2ème année de BTS Audiovisuel option
+                        montage, je souhaiterais déposer ma candidature pour un
+                        poste d'alternant en montage. Mon rythme est de 2
+                        semaines en cours et 2 semaines en entreprise.<br /><br />
+                        J'ai effectué mes stages chez La Maison Noire, une
+                        agence spécialisée dans le luxe et la cosmétique, ainsi
+                        que chez Kop Media, une agence et un média dédiés au
+                        sport. Mes missions étaient de décliner des vidéos sous
+                        différents formats (9/16, 4/3...), monter des vidéos
+                        pour leurs réseaux sociaux et créer des animations
+                        graphiques.<br /><br />
+                        Durant ces deux stages, j'étais donc motion designer et
+                        monteur vidéo. Cela m'a permis d'acquérir une très
+                        solide maîtrise des outils de création de la suite
+                        Adobe, surtout After Effect et Premier Pro. J'ai
+                        également des bases en 3D sur Blender.<br /><br />
+                        Très motivé, curieux et doté d'un bon sens artistique
+                        grâce à mes loisirs (dessin, peinture, photo...), je
+                        suis convaincu que je pourrais contribuer activement à
+                        la réalisation de vos projets.
+                    </div>
+                </div>
+                <div class="logo-container">
+                    <img
+                        src="mehdilogo.png"
+                        alt="Logo Mehdi Imani"
+                        class="logo"
+                    />
+                </div>
+                <div class="cv-container">
+                    <img
+                        src="oeuvres/1_CV%20Mehdi%20Imani-1.png"
+                        alt="CV Mehdi Imani"
+                        class="cv-image zoomable-image"
+                    />
+                </div>
+                <div class="prism-container">
+                    <div class="prism" id="prism1">
+                        <video
+                            src="oeuvres/3_Démo Mehdi Imani alternance.mp4"
+                            muted
+                            loop
+                        ></video>
+                    </div>
+                    <div class="prism" id="prism2">
+                        <video src="oeuvres/Boule quies.mp4" muted loop></video>
+                    </div>
+                    <div class="prism" id="prism3">
+                        <video
+                            src="oeuvres/FOOTBAR_E004_ÉVÉNEMENT BORDEAUX_LONGUE.mp4"
+                            muted
+                            loop
+                        ></video>
+                    </div>
+                    <div class="prism" id="prism4">
+                        <video
+                            src="oeuvres/Goon festival !.mp4"
+                            muted
+                            loop
+                        ></video>
+                    </div>
+                    <div class="prism" id="prism5">
+                        <video
+                            src="oeuvres/LA-ROCHE-POSAY_Mehdi Imani.mp4"
+                            muted
+                            loop
+                        ></video>
+                    </div>
+                    <div class="prism" id="prism6">
+                        <video
+                            src="oeuvres/LCS FAMILY Imani Mehdi.mp4"
+                            muted
+                            loop
+                        ></video>
+                    </div>
+                    <div class="prism" id="prism7">
+                        <video
+                            src="oeuvres/QSD 6 nations rugby.mp4"
+                            muted
+                            loop
+                        ></video>
+                    </div>
+                </div>
             </div>
-            <div class="logo-container">
-                <img src="mehdilogo.png" alt="Logo Mehdi Imani" class="logo">
-            </div>
-            <div class="cv-container">
-                <img src="oeuvres/1_CV%20Mehdi%20Imani-1.png" alt="CV Mehdi Imani" class="cv-image zoomable-image">
-            </div>
-            <div class="prism-container">
-                <div class="prism" id="prism1"><video src="oeuvres/3_Démo Mehdi Imani alternance.mp4" muted loop></video></div>
-                <div class="prism" id="prism2"><video src="oeuvres/Boule quies.mp4" muted loop></video></div>
-                <div class="prism" id="prism3"><video src="oeuvres/FOOTBAR_E004_ÉVÉNEMENT BORDEAUX_LONGUE.mp4" muted loop></video></div>
-                <div class="prism" id="prism4"><video src="oeuvres/Goon festival !.mp4" muted loop></video></div>
-                <div class="prism" id="prism5"><video src="oeuvres/LA-ROCHE-POSAY_Mehdi Imani.mp4" muted loop></video></div>
-                <div class="prism" id="prism6"><video src="oeuvres/LCS FAMILY Imani Mehdi.mp4" muted loop></video></div>
-                <div class="prism" id="prism7"><video src="oeuvres/QSD 6 nations rugby.mp4" muted loop></video></div>
-            </div>
+        </main>
+
+        <div id="image-modal" class="image-modal">
+            <span class="close-modal">&times;</span>
+            <img id="modal-image" src="" alt="Image agrandie" />
+            <a
+                id="download-btn"
+                class="download-btn"
+                href=""
+                download
+                style="display: none"
+                >Télécharger le CV</a
+            >
         </div>
-    </main>
 
-    <div id="image-modal" class="image-modal">
-        <span class="close-modal">&times;</span>
-        <img id="modal-image" src="" alt="Image agrandie">
-        <a id="download-btn" class="download-btn" href="" download style="display: none;">Télécharger le CV</a>
-    </div>
+        <div id="video-modal" class="video-modal">
+            <span class="close-modal">&times;</span>
+            <video id="modal-video" controls></video>
+        </div>
 
-    <div id="video-modal" class="video-modal">
-        <span class="close-modal">&times;</span>
-        <video id="modal-video" controls></video>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
